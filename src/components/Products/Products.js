@@ -2,7 +2,8 @@ import React from "react";
 import products from "../../products";
 import { Grid, Card, Text, Row, Button } from "@nextui-org/react";
 
-const Products = () => {
+const Products = (props) => {
+  const { onAdd } = props;
   return (
     <Grid.Container gap={2} justify="flex-start">
       <Row>
@@ -64,7 +65,13 @@ const Products = () => {
                 >
                   {product.price},00 €
                 </Text>
-                <Button auto color="secondary" rounded flat>
+                <Button
+                  // onClick={() => onAdd(product)}
+                  auto
+                  color="secondary"
+                  rounded
+                  flat
+                >
                   Add to cart
                   {/* Create cart component and call it right here */}
                 </Button>

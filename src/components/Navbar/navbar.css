@@ -2,3 +2,6 @@ li {
   list-style-type: none;
   display: inline;
 }
+nav {
+  display: flex;
+}
