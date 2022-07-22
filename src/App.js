@@ -1,33 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import AppRouter from "./routes/routes";
-import Cart from "./components/Cart/Cart";
-import Products from "./components/Products/Products";
+// import Navbar from "./components/Navbar/Navbar";
+// import Footer from "./components/Footer/Footer";
 
-function App(props) {
-  // const { products } = data;
-  const [cartItems, setCartItems] = useState([]);
-  const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
-    }
-  };
+import { BrowserRouter } from "react-router-dom";
+import Products from "./components/Products/Products";
+import Cart from "./components/Cart/Cart";
+
+const localStorageProducts = JSON.parse(localStorage.getItem("cart")) || [];
+
+function App() {
+  const [cart, setCart] = useState(localStorageProducts);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   return (
     <>
-      {/* <Navbar /> */}
-      <Cart cartItems={cartItems} onAdd={onAdd} />
-      <AppRouter />
-      <Products onAdd={onAdd} />
-      <Footer />
+      <BrowserRouter>
+        {/* <Navbar /> */}
+        <Cart cart={cart} setCart={setCart} />
+        <Products cart={cart} setCart={setCart} />
+        {/* <Footer /> */}
+      </BrowserRouter>
     </>
   );
 }
