@@ -21,11 +21,6 @@ const ProductCard = ({ id, title, img, price, cart, setCart }) => {
   //add counter
 
   //make a copy of cart, filter out the element, then setcart to the original with the e out🐽
-  const removeFromCart = () => {
-    let cartCopy = [...cart];
-    cartCopy = cartCopy.filter((cartItem) => cartItem.id !== id);
-    setCart(cartCopy);
-  };
 
   return (
     <>
@@ -70,7 +65,7 @@ const ProductCard = ({ id, title, img, price, cart, setCart }) => {
               <Button onClick={addProduct} auto color="secondary" rounded flat>
                 Add to cart
               </Button>
-              <Button onClick={removeFromCart}>Remove from cart</Button>
+              {/* <Button onClick={removeFromCart}>Remove from cart</Button> */}
             </Row>
           </Card.Footer>
         </Card>

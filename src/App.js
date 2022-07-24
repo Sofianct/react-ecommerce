@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-// import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 // import Footer from "./components/Footer/Footer";
 
 import { BrowserRouter } from "react-router-dom";
@@ -14,10 +14,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
   return (
     <>
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
         <Cart cart={cart} setCart={setCart} />
         <Products cart={cart} setCart={setCart} />
         {/* <Footer /> */}
