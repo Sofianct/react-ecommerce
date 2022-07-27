@@ -1,26 +1,6 @@
 import React from "react";
 
-const CartCounter = ({
-  qty,
-  addValue,
-  substractValue,
-  counter,
-  setCounter,
-  cart,
-  setCart,
-}) => {
-  //   const [counter, setCounter] = useState(qty);
-  //   const addValue = () => {
-  //     setCounter(counter + 1);
-  //   };
-
-  //   const substractValue = () => {
-  //     setCounter(counter - 1);
-  //   };
-  //   const cartQty = () => {
-  //     setCart(counter);
-  //     //code...
-  //   };
+const CartCounter = ({ addValue, substractValue, counter }) => {
   return (
     <>
       <button

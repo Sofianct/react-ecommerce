@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-// import Footer from "./components/Footer/Footer";
+import Header from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 import { BrowserRouter } from "react-router-dom";
-import Products from "./components/Products/Products";
-import Cart from "./components/Cart/Cart";
+import HomePage from "./components/HomePage/HomePage";
 
 const localStorageProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
 function App() {
+  const [open, setOpen] = useState(false);
   const [cart, setCart] = useState(localStorageProducts);
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -18,10 +18,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Cart cart={cart} setCart={setCart} />
-        <Products cart={cart} setCart={setCart} />
-        {/* <Footer /> */}
+        <Header open={open} setOpen={setOpen} />
+        <HomePage cart={cart} setCart={setCart} open={open} setOpen={setOpen} />
+        <Footer />
       </BrowserRouter>
     </>
   );

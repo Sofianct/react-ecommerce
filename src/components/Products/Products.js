@@ -1,11 +1,21 @@
 import React from "react";
+import "./products.css";
 import products from "../../products";
 import { Grid, Text, Row } from "@nextui-org/react";
 import ProductCard from "../ProductCard/ProductCard";
+import { Toaster } from "react-hot-toast";
 
-const Products = ({ cart, setCart }) => {
+const Products = ({ cart, setCart, setOpen }) => {
   return (
-    <Grid.Container gap={2} justify="flex-start">
+    <Grid.Container
+      css={{
+        width: "75%",
+        minHeight: "100vh",
+      }}
+      gap={2}
+      justify="flex-start"
+      align="center"
+    >
       <Row>
         <Text
           b
@@ -20,15 +30,19 @@ const Products = ({ cart, setCart }) => {
       </Row>
       {products.map((product) => {
         return (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            title={product.title}
-            img={product.img}
-            price={product.price}
-            cart={cart}
-            setCart={setCart}
-          />
+          <Grid xs={4} sm={4} md={3} key={product.id}>
+            <ProductCard
+              id={product.id}
+              title={product.title}
+              img={product.img}
+              price={product.price}
+              cart={cart}
+              setCart={setCart}
+              setOpen={setOpen}
+            />
+            {/* Message "Added to cart" */}
+            <Toaster />
+          </Grid>
         );
       })}
     </Grid.Container>

@@ -1,0 +1,18 @@
+footer {
+  background: linear-gradient(90deg, #2d1e62 12.01%, #4c2b9e 86.87%);
+  color: white;
+}
+
+footer a {
+  color: #b864c8;
+}
+
+.br {
+  border-bottom: 2px solid #644ea5;
+  margin: 0 15rem 2rem 15rem;
+}
+
+a:hover {
+  color: #e359ff;
+  text-decoration: none;
+}

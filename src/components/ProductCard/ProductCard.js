@@ -1,7 +1,9 @@
 import React from "react";
-import { Grid, Card, Text, Row, Button } from "@nextui-org/react";
+import "./productCard.css";
+import { Card, Text, Row, Button } from "@nextui-org/react";
+import toast from "react-hot-toast";
 
-const ProductCard = ({ id, title, img, price, cart, setCart }) => {
+const ProductCard = ({ id, title, img, price, cart, setCart, setOpen }) => {
   const addProduct = () => {
     const prodExist = cart.find((e) => e.id === id);
 
@@ -11,65 +13,86 @@ const ProductCard = ({ id, title, img, price, cart, setCart }) => {
           e.id === id ? { ...prodExist, qty: prodExist.qty + 1 } : e
         )
       );
+      //Toast
+      toast.custom(
+        <div
+          style={{ borderRadius: "10px" }}
+          className="p-2 mb-2 bg-success text-white"
+        >
+          <button
+            onClick={() => setOpen(true)}
+            className="badge badge-success scale-up-center"
+          >
+            Added to cart
+          </button>
+        </div>
+      );
     } else {
       setCart([
         ...cart,
         { id: id, title: title, price: price, img: img, qty: 1 },
       ]);
+      //Toast
+      toast.custom(
+        <div
+          style={{ borderRadius: "10px" }}
+          className="p-2 mb-2 bg-success text-white scale-up-center"
+        >
+          <button onClick={() => setOpen(true)} className="badge badge-success">
+            Added to cart
+          </button>
+        </div>
+      );
     }
   };
-  //add counter
-
-  //make a copy of cart, filter out the element, then setcart to the original with the e out🐽
 
   return (
     <>
-      <Grid alignContent="center" xs={6} sm={3}>
-        <Card>
-          <Card.Body css={{ p: 0 }}>
-            <Card.Image
-              css={{ p: 0 }}
-              showSkeleton
-              src={img}
-              objectFit="cover"
-              alt={title}
-            />
-          </Card.Body>
-          <Card.Footer
-            css={{
-              backgroundColor: "#7828C8",
-              p: 0,
-            }}
-          >
-            <Row wrap="wrap" justify="space-around" align="center">
-              <Text
-                b
-                css={{
-                  color: "$accents2",
-                  fontWeight: "$semibold",
-                  fontSize: "$sm",
-                  p: 0,
-                }}
-              >
-                {title}
-              </Text>
-              <Text
-                css={{
-                  color: "$accents4",
-                  fontWeight: "$semibold",
-                  fontSize: "$md",
-                }}
-              >
-                {price},00 €
-              </Text>
-              <Button onClick={addProduct} auto color="secondary" rounded flat>
+      <Card className="card">
+        <Card.Body>
+          <Card.Image
+            showSkeleton
+            src={img}
+            objectFit="cover"
+            height={100}
+            alt={title}
+          />
+        </Card.Body>
+        <Card.Footer
+          css={{
+            p: 0,
+          }}
+        >
+          <Row wrap="wrap" justify="center" align="center">
+            <Text
+              b
+              css={{
+                color: "#11181C",
+                fontWeight: "$semibold",
+                fontSize: "$sm",
+                margin: "15px",
+              }}
+            >
+              {title}
+            </Text>
+            <Text
+              css={{
+                color: "#363636",
+                fontWeight: "$semibold",
+                fontSize: "$md",
+                margin: "15px",
+              }}
+            >
+              {price},00 €
+            </Text>
+            <Row wrap="wrap" justify="center" align="center">
+              <Button onPress={addProduct} color="success" auto ghost>
                 Add to cart
               </Button>
-              {/* <Button onClick={removeFromCart}>Remove from cart</Button> */}
             </Row>
-          </Card.Footer>
-        </Card>
-      </Grid>
+          </Row>
+        </Card.Footer>
+      </Card>
     </>
   );
 };
