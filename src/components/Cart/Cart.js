@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Drawer } from "@mui/material";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import "./cart.css";
 
+import { ContextDrawer } from "../Context/DrawerContext";
 import CartItem from "../CartItem/CartItem";
 
-const Cart = ({ cart, setCart, id, open, setOpen }) => {
+const Cart = ({ cart, setCart }) => {
+  const { open, setOpen } = useContext(ContextDrawer);
   return (
     <>
       <Drawer

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./productCard.css";
 import { Card, Text, Row, Button } from "@nextui-org/react";
 import toast from "react-hot-toast";
+import { ContextDrawer } from "../Context/DrawerContext";
 
-const ProductCard = ({ id, title, img, price, cart, setCart, setOpen }) => {
+const ProductCard = ({ id, title, img, price, cart, setCart }) => {
+  const { setOpen } = useContext(ContextDrawer);
   const addProduct = () => {
     const prodExist = cart.find((e) => e.id === id);
 
@@ -50,13 +52,7 @@ const ProductCard = ({ id, title, img, price, cart, setCart, setOpen }) => {
     <>
       <Card className="card">
         <Card.Body>
-          <Card.Image
-            showSkeleton
-            src={img}
-            objectFit="cover"
-            height={100}
-            alt={title}
-          />
+          <Card.Image showSkeleton src={img} objectFit="cover" alt={title} />
         </Card.Body>
         <Card.Footer
           css={{

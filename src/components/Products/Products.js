@@ -5,11 +5,11 @@ import { Grid, Text, Row } from "@nextui-org/react";
 import ProductCard from "../ProductCard/ProductCard";
 import { Toaster } from "react-hot-toast";
 
-const Products = ({ cart, setCart, setOpen }) => {
+const Products = ({ cart, setCart }) => {
   return (
     <Grid.Container
       css={{
-        width: "75%",
+        width: "60%",
         minHeight: "100vh",
       }}
       gap={2}
@@ -30,7 +30,7 @@ const Products = ({ cart, setCart, setOpen }) => {
       </Row>
       {products.map((product) => {
         return (
-          <Grid xs={4} sm={4} md={3} key={product.id}>
+          <Grid xs={6} sm={4} md={3} key={product.id}>
             <ProductCard
               id={product.id}
               title={product.title}
@@ -38,7 +38,6 @@ const Products = ({ cart, setCart, setOpen }) => {
               price={product.price}
               cart={cart}
               setCart={setCart}
-              setOpen={setOpen}
             />
             {/* Message "Added to cart" */}
             <Toaster />

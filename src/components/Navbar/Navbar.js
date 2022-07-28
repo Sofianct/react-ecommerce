@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ContextDrawer } from "../Context/DrawerContext";
 import "./navbar.css";
 // import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -6,7 +7,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 
-function Header({ open, setOpen }) {
+function Header() {
+  const { open, setOpen } = useContext(ContextDrawer);
+  console.log(open);
   return (
     <>
       <Navbar bg="dark" variant="dark">
