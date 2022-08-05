@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./products.css";
-import products from "../../products";
 import { Grid, Text, Row } from "@nextui-org/react";
 import ProductCard from "../ProductCard/ProductCard";
 import { Toaster } from "react-hot-toast";
 
-const Products = ({ cart, setCart }) => {
+const Products = () => {
+  const [prod, setProd] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3333/products")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProd(data);
+      });
+  }, []);
+
   return (
     <Grid.Container
+      className="gridCont"
       css={{
-        width: "60%",
+        width: "80%",
         minHeight: "100vh",
       }}
       gap={2}
@@ -28,7 +39,7 @@ const Products = ({ cart, setCart }) => {
           Keyboards
         </Text>
       </Row>
-      {products.map((product) => {
+      {prod.map((product) => {
         return (
           <Grid xs={6} sm={4} md={3} key={product.id}>
             <ProductCard
@@ -36,10 +47,8 @@ const Products = ({ cart, setCart }) => {
               title={product.title}
               img={product.img}
               price={product.price}
-              cart={cart}
-              setCart={setCart}
             />
-            {/* Message "Added to cart" */}
+            {/* Toast "Added to cart" */}
             <Toaster />
           </Grid>
         );

@@ -3,11 +3,31 @@ import { Drawer } from "@mui/material";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import "./cart.css";
 
-import { ContextDrawer } from "../Context/DrawerContext";
+import { ContextDrawer } from "../../context/DrawerContext";
 import CartItem from "../CartItem/CartItem";
+import { CartContext } from "../../context/Cartcontext";
 
-const Cart = ({ cart, setCart }) => {
+const Cart = () => {
   const { open, setOpen } = useContext(ContextDrawer);
+  const { cart } = useContext(CartContext);
+
+  /**
+   * It takes an array of objects, and returns the sum of the price of each object multiplied by its
+   * quantity.
+   * @param arr - the array of objects
+   * @returns The total price of all items in the cart.
+   */
+  const total = (arr) => {
+    const itemsPrice = arr.reduce((a, c) => a + c.qty * c.price, 0);
+    return itemsPrice;
+  };
+
+  const totalTax =
+    Math.round((total(cart) * 0.21 + Number.EPSILON) * 100) / 100;
+
+  const totalPrice =
+    Math.round((total(cart) + totalTax + Number.EPSILON) * 100) / 100;
+
   return (
     <>
       <Drawer
@@ -54,8 +74,6 @@ const Cart = ({ cart, setCart }) => {
                         img={img}
                         price={price}
                         qty={qty}
-                        cart={cart}
-                        setCart={setCart}
                       />
                     );
                   })}
@@ -63,8 +81,9 @@ const Cart = ({ cart, setCart }) => {
               </table>
             </Scrollbars>
             <div>
-              <div>Total</div>
-              <div>$99,99</div>
+              <p>Subtotal: {total(cart)},00 €</p>
+              <p>Iva: {totalTax}</p>
+              <p>Total: {totalPrice}</p>
             </div>
             <button className="btn btn-primary auto">Checkout</button>
           </>

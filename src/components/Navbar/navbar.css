@@ -9,3 +9,14 @@ nav {
 body {
   font-family: "Open Sans", sans-serif;
 }
+.btnn {
+  all: unset;
+  cursor: pointer;
+  color: white;
+  width: 1rem;
+}
+.cartQty {
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 5px;
+}

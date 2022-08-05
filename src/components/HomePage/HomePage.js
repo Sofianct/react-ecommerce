@@ -4,12 +4,12 @@ import Products from "../Products/Products";
 import { Grid } from "@nextui-org/react";
 // import Banner from "../Banner/Banner";
 
-function HomePage({ cart, setCart, open, setOpen }) {
+function HomePage() {
   return (
     <Grid.Container justify="center">
       {/* <Banner /> */}
-      <Cart cart={cart} setCart={setCart} />
-      <Products cart={cart} setCart={setCart} />
+      <Cart />
+      <Products />
     </Grid.Container>
   );
 }

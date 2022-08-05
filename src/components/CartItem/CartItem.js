@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "../../context/Cartcontext";
 import CartCounter from "../CartCounter/CartCounter";
 
-const CartItem = ({ id, title, price, qty, cart, setCart, setOpen }) => {
+const CartItem = ({ id, title, price, qty }) => {
+  const { cart, setCart } = useContext(CartContext);
   //added a counter to change the qty prop
   const [counter, setCounter] = useState(qty);
 
@@ -61,8 +63,6 @@ const CartItem = ({ id, title, price, qty, cart, setCart, setOpen }) => {
             setCounter={setCounter}
             addValue={addValue}
             substractValue={substractValue}
-            cart={cart}
-            setCart={setCart}
           />
         </td>
         <td>{price},00 €</td>

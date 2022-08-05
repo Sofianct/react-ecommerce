@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import "./productCard.css";
 import { Card, Text, Row, Button } from "@nextui-org/react";
 import toast from "react-hot-toast";
-import { ContextDrawer } from "../Context/DrawerContext";
+import { ContextDrawer } from "../../context/DrawerContext";
+import { CartContext } from "../../context/Cartcontext";
 
-const ProductCard = ({ id, title, img, price, cart, setCart }) => {
+const ProductCard = ({ id, title, img, price }) => {
+  const { cart, setCart } = useContext(CartContext);
   const { setOpen } = useContext(ContextDrawer);
   const addProduct = () => {
     const prodExist = cart.find((e) => e.id === id);

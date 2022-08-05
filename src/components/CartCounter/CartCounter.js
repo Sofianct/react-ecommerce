@@ -10,7 +10,7 @@ const CartCounter = ({ addValue, substractValue, counter }) => {
       >
         +
       </button>
-      <div>{counter}</div> {/*{ counter } */}
+      <div>{counter}</div>
       <button
         type="button"
         className="btn btn-primary btn-sm"

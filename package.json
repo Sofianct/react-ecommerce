@@ -5,17 +5,20 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@hookform/error-message": "^2.0.0",
     "@mui/material": "^5.9.1",
     "@nextui-org/react": "^1.0.0-beta.9",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
+    "json-server": "^0.17.0",
     "notyf": "^3.10.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.34.0",
     "react-hot-toast": "^2.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^2.1.3",
@@ -27,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch ./DB/db.json"
   },
   "eslintConfig": {
     "extends": [

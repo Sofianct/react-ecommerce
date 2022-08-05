@@ -1,32 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
 import Header from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-
-import { BrowserRouter } from "react-router-dom";
-import HomePage from "./components/HomePage/HomePage";
-import DrawerContext from "./components/Context/DrawerContext";
-
-const localStorageProducts = JSON.parse(localStorage.getItem("cart")) || [];
+import DrawerContext from "./context/DrawerContext";
+import CartContext from "./context/Cartcontext";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "./routes/routes";
 
 function App() {
-  // const [open, setOpen] = useState(false);
-  const [cart, setCart] = useState(localStorageProducts);
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
   return (
-    <>
-      <BrowserRouter>
-        <DrawerContext>
+    <CartContext>
+      <DrawerContext>
+        <Router>
           <Header />
-          <HomePage cart={cart} setCart={setCart} />
+          <AppRouter />
           <Footer />
-        </DrawerContext>
-      </BrowserRouter>
-    </>
+        </Router>
+      </DrawerContext>
+    </CartContext>
   );
 }
+
+//init json server: npx json-server --watch -p 3333 db.json
 
 export default App;

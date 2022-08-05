@@ -1,27 +1,35 @@
 import React, { useContext } from "react";
-import { ContextDrawer } from "../Context/DrawerContext";
+import { ContextDrawer } from "../../context/DrawerContext";
 import "./navbar.css";
-// import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/Cartcontext";
 
 function Header() {
-  const { open, setOpen } = useContext(ContextDrawer);
-  console.log(open);
+  const { setOpen } = useContext(ContextDrawer);
+  const { cart } = useContext(CartContext);
+  const cartQty = cart.reduce(
+    (total, currentValue) => (total = total + currentValue.qty),
+    0
+  );
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link to="/home">Home</Nav.Link>
-            <Nav.Link to="/products">Products</Nav.Link>
-            <Button variant="info" onClick={() => setOpen(true)}>
-              Cart
-            </Button>
-            {/* <div style={{ color: "white" }}>{ cartQty }</div> */}
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+            <Link className="nav-link" to="/login">
+              Log In
+            </Link>
+            <button className="btnn" onClick={() => setOpen(true)}>
+              <i className="fa-solid fa-cart-shopping"></i>
+            </button>
+            <div className="cartQty"> {cartQty}</div>
           </Nav>
         </Container>
       </Navbar>
