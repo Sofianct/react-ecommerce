@@ -1,0 +1,69 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Ducky x Varmilo MIYA Pro Sakura Pink Led 65% Dye  Sub PBT Mechanical Keyboard",
+      "price": 119,
+      "img": "./img/img_1.png"
+    },
+    {
+      "id": 2,
+      "title": "Ducky Mecha Mini v2 RGB LED 60% Double Shot PBT Mechanical Keyboard",
+      "price": 119,
+      "img": "./img/img_2.png"
+    },
+    {
+      "id": 3,
+      "title": "Ducky x Varmilo MIYA Pro Panda White Led 65% Dye Sub PBT Mechanical Keyboard",
+      "price": 135,
+      "img": "./img/img_3.png"
+    },
+    {
+      "id": 4,
+      "title": "Ducky x Varmilo MIYA Pro Koi Led 65% Dye Sub PBT Mechanical Keyboard",
+      "price": 135,
+      "img": "./img/img_4.png"
+    },
+    {
+      "id": 5,
+      "title": "Ducky One 2 Horizon Double Shot PBT Mechanical Keyboard",
+      "price": 99,
+      "img": "./img/img_5.png"
+    },
+    {
+      "id": 6,
+      "title": "Ducky One 2 Mini Pure White - RGB LED 60% Double Shot PBT Mechanical Keyboard",
+      "price": 99,
+      "img": "./img/img_6.png"
+    },
+    {
+      "id": 7,
+      "title": "Ducky One 2 SF RGB Pure White RGB LED 60% Double Shot PBT Mechanical Keyboard",
+      "price": 109,
+      "img": "./img/img_7.png"
+    },
+    {
+      "id": 8,
+      "title": "Vortex Race 3 TKL Dye Sub PBT Mechanical Keyboard",
+      "price": 139,
+      "img": "./img/img_8.png"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "pepito",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "username": "pepex2",
+      "password": "password"
+    },
+    {
+      "id": 3,
+      "username": "pepex3",
+      "password": "123456789"
+    }
+  ]
+}
