@@ -3,11 +3,12 @@ import "./products.css";
 import { Grid, Text, Row } from "@nextui-org/react";
 import ProductCard from "../ProductCard/ProductCard";
 import { Toaster } from "react-hot-toast";
+import { url } from "../Constants";
 
 const Products = () => {
   const [prod, setProd] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3333/products")
+    fetch(url)
       .then((res) => {
         return res.json();
       })

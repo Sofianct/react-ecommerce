@@ -22,74 +22,73 @@ const Cart = () => {
     return itemsPrice;
   };
 
-  const totalTax =
-    Math.round((total(cart) * 0.21 + Number.EPSILON) * 100) / 100;
+  // const totalTax =
+  //   Math.round((total(cart) * 0.21 + Number.EPSILON) * 100) / 100;
 
-  const totalPrice =
-    Math.round((total(cart) + totalTax + Number.EPSILON) * 100) / 100;
+  // const totalPrice =
+  //   Math.round((total(cart) + totalTax + Number.EPSILON) * 100) / 100;
 
   return (
-    <>
-      <Drawer
-        open={open}
-        anchor="right"
-        onClose={() => setOpen(false)}
-        PaperProps={{ style: { width: "25%" } }}
-      >
-        {/* Button to close cart from inside drawer */}
-        <div className="text-center">
-          <p>Cart</p>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => setOpen(false)}
-          >
-            Close
-          </button>
-        </div>
-        {cart.length === 0 ? (
-          <div className="text-center">Cart is empty</div>
-        ) : (
-          <>
-            <Scrollbars autoHide style={{ height: 600 }}>
-              <table className="table table-sm table-responsive">
-                <thead>
-                  <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Op</th>
-                    <th scope="col">Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* Mapping through the cart array and returning a CartItem component
+    <Drawer
+      open={open}
+      anchor="right"
+      onClose={() => setOpen(false)}
+      PaperProps={{ style: { width: "25%" } }}
+    >
+      <div className="text-center">
+        <p>Cart</p>
+        <button
+          type="button"
+          className="btn m-2"
+          onClick={() => setOpen(false)}
+        >
+          <i className="fa fa-close"></i>
+        </button>
+      </div>
+      {cart.length === 0 ? (
+        <div className="text-center mt-5">Cart is empty</div>
+      ) : (
+        <>
+          <Scrollbars autoHide style={{ height: 600 }}>
+            <table className="table table-sm table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Op</th>
+                  <th scope="col">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Mapping through the cart array and returning a CartItem component
           for each item in the cart array.  */}
-                  {cart.map(({ id, title, price, img, qty }) => {
-                    return (
-                      <CartItem
-                        key={id}
-                        id={id}
-                        title={title}
-                        img={img}
-                        price={price}
-                        qty={qty}
-                      />
-                    );
-                  })}
-                </tbody>
-              </table>
-            </Scrollbars>
-            <div>
-              <p>Subtotal: {total(cart)},00 €</p>
-              <p>Iva: {totalTax}</p>
-              <p>Total: {totalPrice}</p>
-            </div>
-            <button className="btn btn-primary auto">Checkout</button>
-          </>
-        )}
-      </Drawer>
-    </>
+                {cart.map(({ id, title, price, img, qty }) => {
+                  return (
+                    <CartItem
+                      key={id}
+                      id={id}
+                      title={title}
+                      img={img}
+                      price={price}
+                      qty={qty}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+          </Scrollbars>
+          <div>
+            <p>
+              Total: <span>{total(cart)},00 €</span>
+            </p>
+            {/* <p>Iva: {totalTax}</p>
+            <p>Total: {totalPrice}</p> */}
+          </div>
+          <button className="btn btn-primary auto">Checkout</button>
+        </>
+      )}
+    </Drawer>
   );
 };
 

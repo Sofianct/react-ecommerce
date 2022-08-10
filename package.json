@@ -32,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch ./src/DB/db.json"
+    "server": "json-server --watch -p 3333 ./src/DB/db.json"
+    
   },
   "eslintConfig": {
     "extends": [

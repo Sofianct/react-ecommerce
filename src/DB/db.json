@@ -52,18 +52,8 @@
   "users": [
     {
       "id": 1,
-      "username": "pepito",
-      "password": "12345678"
-    },
-    {
-      "id": 2,
-      "username": "pepex2",
-      "password": "password"
-    },
-    {
-      "id": 3,
-      "username": "pepex3",
-      "password": "123456789"
+      "email": "email@email.com",
+      "password": "123456"
     }
   ]
 }
