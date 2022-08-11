@@ -18,13 +18,15 @@ function Header() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <i className="fas fa-keyboard"></i>
+          </Navbar.Brand>
           <Nav className="me-auto">
             <Link className="nav-link" to="/">
               Home
             </Link>
-            <Link className="nav-link" to="/login">
-              Log In
+            <Link className="nav-link" to="/checkout">
+              Guest Checkout
             </Link>
             <button className="btnn" onClick={() => setOpen(true)}>
               <i className="fa-solid fa-cart-shopping"></i>

@@ -1,33 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { Logincontext } from "../../context/LoginContext";
 import LoginForm from "../LoginForm/LoginForm";
 
 const Dashboard = () => {
-  const userData = {
-    email: "email@email.com",
-    password: "123",
-  };
-
-  const [user, setUser] = useState({ email: "" });
-  const [error, setError] = useState("");
-
-  const Login = (details) => {
-    if (
-      details.email === userData.email &&
-      details.password === userData.password
-    ) {
-      setUser({
-        email: details.email,
-      });
-    } else if (details.email === "" && details.password === "") {
-      setError("Please write your email and password");
-    } else {
-      setError("Wrong email or password");
-    }
-  };
-
-  const Logout = () => {
-    setUser({ email: "" });
-  };
+  const { Logout, user, error, Login } = useContext(Logincontext);
   return (
     <>
       {user.email !== "" ? (

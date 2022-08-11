@@ -1,24 +1,37 @@
 import React from "react";
+import "./cartCounter.css";
 
-const CartCounter = ({ addValue, substractValue, counter }) => {
+const CartCounter = ({ addValue, substractValue, counter, removeFromCart }) => {
   return (
-    <>
+    <div className="btn-group shadow-0" role="group">
       <button
         type="button"
-        className="btn btn-primary btn-sm"
-        onClick={addValue}
-      >
-        +
-      </button>
-      <div>{counter}</div>
-      <button
-        type="button"
-        className="btn btn-primary btn-sm"
+        className="btn btn-secondary btn-masmenos btn-minus btn-sm"
         onClick={substractValue}
       >
         -
       </button>
-    </>
+      <input
+        type="text"
+        value={counter}
+        className="form-control form-control-sm"
+        disabled
+      />
+      <button
+        type="button"
+        className="btn btn-secondary btn-masmenos btn-plus btn-sm"
+        onClick={addValue}
+      >
+        +
+      </button>
+      <button
+        type="button"
+        className="btn btn-secondary btn-masmenos btn-sm"
+        onClick={removeFromCart}
+      >
+        X
+      </button>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Checkout from "../components/Checkout/Checkout";
 import Dashboard from "../components/Dashboard/Dashboard";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 import HomePage from "../components/HomePage/HomePage";
 
@@ -10,7 +10,8 @@ function AppRouter() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Dashboard />} />
-      <Route path="*" element={<ErrorPage />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>
   );
 }

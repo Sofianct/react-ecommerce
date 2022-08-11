@@ -28,16 +28,16 @@ const Products = () => {
       justify="flex-start"
       align="center"
     >
-      <Row>
+      <Row justify="center" align="center">
         <Text
-          b
+          h1
+          size={30}
           css={{
-            color: "Black",
-            fontWeight: "$semibold",
-            fontSize: "$xl",
+            textGradient: "45deg, $blue600 -20%, $pink600 50%",
           }}
+          weight="bold"
         >
-          Keyboards
+          Mechanical Keyboards
         </Text>
       </Row>
       {prod.map((product) => {

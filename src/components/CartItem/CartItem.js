@@ -57,23 +57,15 @@ const CartItem = ({ id, title, price, qty }) => {
     <>
       <tr>
         <td>{title}</td>
+        <td>{price},00 €</td>
         <td>
           <CartCounter
             counter={counter}
             setCounter={setCounter}
             addValue={addValue}
             substractValue={substractValue}
+            removeFromCart={removeFromCart}
           />
-        </td>
-        <td>{price},00 €</td>
-        <td>
-          <button
-            type="button"
-            className="btn btn-primary btn-sm"
-            onClick={removeFromCart}
-          >
-            X
-          </button>
         </td>
         <td>{qty * price},00 €</td>
       </tr>

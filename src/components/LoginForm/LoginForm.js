@@ -7,11 +7,12 @@ const LoginForm = ({ Login, error }) => {
     e.preventDefault();
     Login(details);
   };
+
   return (
     <div className="flexContainer mt-5">
       <form onSubmit={submitHandler}>
         <div className="form-outline mb-4 text-center">LOG IN</div>
-        {error !== +"" ? <div className="error">{error}</div> : ""}
+        {error !== "" ? <div className="error">{error}</div> : ""}
         <div className="form-outline mb-4">
           <input
             type="email"

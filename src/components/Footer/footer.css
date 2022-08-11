@@ -1,10 +1,10 @@
 footer {
-  background: linear-gradient(90deg, #2d1e62 12.01%, #4c2b9e 86.87%);
+  background: linear-gradient(90deg, #342e48 12.01%, #3d2e62 86.87%);
   color: white;
 }
 
 footer a {
-  color: #b864c8;
+  color: #b57fc0;
 }
 
 .br {
@@ -13,6 +13,6 @@ footer a {
 }
 
 a:hover {
-  color: #e359ff;
+  color: #e375f9;
   text-decoration: none;
 }
