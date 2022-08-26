@@ -2,10 +2,14 @@ import React, { useState, useContext } from "react";
 import "./checkout.css";
 import { CartContext } from "../../context/Cartcontext";
 import Table from "react-bootstrap/Table";
-import Swal from "sweetalert2";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Checkout = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const { cart, setCart } = useContext(CartContext)
   const [details, setDetails] = useState({
     firstName: "",
     lastName: "",
@@ -22,6 +26,16 @@ const Checkout = () => {
     cardDate: "",
     cardCvc: "",
   });
+  const closeForm = () => {
+    setShow(false);
+    resetForm();
+    window.location = "/";
+  };
+  const openModal = () => {
+    if (details.cardCvc !== "") {
+      setShow(true);
+    }
+  };
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -47,15 +61,6 @@ const Checkout = () => {
     let cartCopy = [...cart];
     cartCopy = [];
     setCart(cartCopy);
-  };
-  const buyNow = () => {
-    Swal.fire({
-      position: "top-center",
-      icon: "success",
-      title: "Thank you for your purchase",
-      showConfirmButton: true,
-      timer: 5000,
-    });
   };
   const total = (arr) => {
     const itemsPrice = arr.reduce((a, c) => a + c.qty * c.price, 0);
@@ -374,14 +379,23 @@ const Checkout = () => {
 
         <div className="row mb-2 mt-3 justify-content-center">
           <button
+            onClick={openModal}
             type="submit"
             className="btn btn-success btn-lg"
-            onClick={buyNow}
           >
             Buy Now
           </button>
         </div>
       </form>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>Thanks for your purchase!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeForm}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

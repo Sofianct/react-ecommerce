@@ -1,6 +1,12 @@
+.footerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
 footer {
   background: linear-gradient(90deg, #342e48 12.01%, #3d2e62 86.87%);
   color: white;
+  width: 100%;
 }
 
 footer a {

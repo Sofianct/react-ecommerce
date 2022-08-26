@@ -18,43 +18,43 @@ const Products = () => {
   }, []);
 
   return (
-    <Grid.Container
-      className="gridCont"
-      css={{
-        width: "80%",
-        minHeight: "100vh",
-      }}
-      gap={2}
-      justify="flex-start"
-      align="center"
-    >
-      <Row justify="center" align="center">
-        <Text
-          h1
-          size={30}
-          css={{
-            textGradient: "45deg, $blue600 -20%, $pink600 50%",
-          }}
-          weight="bold"
-        >
-          Mechanical Keyboards
-        </Text>
-      </Row>
-      {prod.map((product) => {
-        return (
-          <Grid xs={6} sm={4} md={3} key={product.id}>
-            <ProductCard
-              id={product.id}
-              title={product.title}
-              img={product.img}
-              price={product.price}
-            />
-            {/* Toast "Added to cart" */}
-            <Toaster />
-          </Grid>
-        );
-      })}
-    </Grid.Container>
+    <div className="gridCont">
+      <Grid.Container
+        css={{
+          width: "80%",
+          minHeight: "100vh",
+        }}
+        gap={2}
+      >
+        <Row className="centerText">
+          <Text
+            h1
+            size={30}
+            css={{
+              textGradient: "45deg, $blue600 -20%, $pink600 50%",
+              margin: "10px 0 10px 0",
+            }}
+            weight="bold"
+          >
+            Mechanical Keyboards
+          </Text>
+        </Row>
+        {prod.map((product) => {
+          return (
+            <Grid xs={6} sm={4} md={3} key={product.id}>
+              <ProductCard
+                id={product.id}
+                title={product.title}
+                img={product.img}
+                price={product.price}
+              />
+              {/* Toast "Added to cart" */}
+              <Toaster />
+            </Grid>
+          );
+        })}
+      </Grid.Container>
+    </div>
   );
 };
 

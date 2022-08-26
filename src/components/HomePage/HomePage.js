@@ -1,13 +1,13 @@
 import React from "react";
-import Products from "../Products/Products";
-import { Grid } from "@nextui-org/react";
 // import HomeProducts from "../HomeProducts/HomeProducts";
-// import Banner from "../Banner/Banner";
+import { Grid } from "@nextui-org/react";
+import HomeBanner from "../HomeBanner/HomeBanner";
+import Products from "../Products/Products";
 
 function HomePage() {
   return (
     <Grid.Container justify="center">
-      {/* <Banner /> */}
+      <HomeBanner />
       {/* <HomeProducts /> */}
       <Products />
     </Grid.Container>

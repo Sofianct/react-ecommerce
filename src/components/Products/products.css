@@ -1,3 +1,12 @@
-.prodContainer {
-  max-width: 75%;
+.gridCont {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.centerText {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }

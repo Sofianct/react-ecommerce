@@ -2,3 +2,6 @@ h3 {
   font-size: 2rem;
   color: green;
 }
+form {
+  min-height: 68vh;
+}

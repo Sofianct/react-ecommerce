@@ -5,10 +5,9 @@ li {
 nav {
   display: flex;
   font-family: "Cabin", sans-serif;
-  background: linear-gradient(90deg, #2d1e62 12.01%, #4c2b9e 86.87%);
+  background: #282828;
   color: white;
   height: 4rem;
-  margin-bottom: 2rem;
 }
 body {
   font-family: "Open Sans", sans-serif;

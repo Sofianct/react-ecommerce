@@ -11,32 +11,7 @@ const ProductCard = ({ id, title, img, price }) => {
   const addProduct = () => {
     const prodExist = cart.find((e) => e.id === id);
 
-    if (prodExist) {
-      setCart(
-        cart.map((e) =>
-          e.id === id ? { ...prodExist, qty: prodExist.qty + 1 } : e
-        )
-      );
-      //Toast
-      toast.custom(
-        <div
-          style={{ borderRadius: "10px" }}
-          className="p-2 mb-2 bg-success text-white"
-        >
-          <button
-            onClick={() => setOpen(true)}
-            className="badge badge-success scale-up-center"
-          >
-            Added to cart
-          </button>
-        </div>
-      );
-    } else {
-      setCart([
-        ...cart,
-        { id: id, title: title, price: price, img: img, qty: 1 },
-      ]);
-      //Toast
+    const Toast = () => {
       toast.custom(
         <div
           style={{ borderRadius: "10px" }}
@@ -47,6 +22,24 @@ const ProductCard = ({ id, title, img, price }) => {
           </button>
         </div>
       );
+    };
+
+    if (prodExist) {
+      setCart(
+        cart.map((e) =>
+          e.id === id ? { ...prodExist, qty: prodExist.qty + 1 } : e
+        )
+      );
+      //Toast
+
+      Toast();
+    } else {
+      setCart([
+        ...cart,
+        { id: id, title: title, price: price, img: img, qty: 1 },
+      ]);
+      //Toast
+      Toast();
     }
   };
 

@@ -19,7 +19,14 @@ function Header() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
-            <i className="fas fa-keyboard"></i>
+            <img
+              src="https://pbs.twimg.com/profile_images/1384768556504543233/UHH5FX--_400x400.jpg"
+              width="40"
+              height="40"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+              style={{ borderRadius: "50%" }}
+            />
           </Navbar.Brand>
           <Nav className="me-auto">
             <Link className="nav-link" to="/">

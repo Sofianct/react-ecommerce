@@ -16,6 +16,7 @@ const CartCounter = ({ addValue, substractValue, counter, removeFromCart }) => {
         value={counter}
         className="form-control form-control-sm"
         disabled
+        style={{ width: "1.5rem" }}
       />
       <button
         type="button"
