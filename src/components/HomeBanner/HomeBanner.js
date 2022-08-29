@@ -20,26 +20,26 @@ const HomeBanner = () => {
         "--swiper-navigation-color": "#fff",
         "--swiper-pagination-color": "#fff",
         "--swiper-navigation-size": "1.5rem",
-        "--swiper-pagination-color": "#fff",
         "--swiper-pagination-bullet-inactive-color": "#2b2b2b",
         "--swiper-pagination-bullet-inactive-opacity": "1",
         "--swiper-pagination-bullet-size": "10px",
         "--swiper-pagination-bullet-horizontal-gap": "6px",
       }}
       autoplay={{
-        delay: 3500,
+        delay: 2500,
+        disableOnInteraction: false,
       }}
       className="swiper-slide"
     >
       <SwiperSlide>
-        <img src="../../img/carousel/if98.jpg" alt="a slide1" />
+        <img src="../../img/carousel/if98.png" alt="a slide1" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src="../../img/carousel/vn66.jpg" alt="a slide2" />
+        <img src="../../img/carousel/vn66.png" alt="a slide2" />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src="../../img/carousel/lavender-rabbits-keycaps.jpg"
+          src="../../img/carousel/lavender-rabbits-keycaps.png"
           alt="a slide3"
         />
       </SwiperSlide>

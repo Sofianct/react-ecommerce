@@ -6,17 +6,20 @@ import DrawerContext from "./context/DrawerContext";
 import CartContext from "./context/Cartcontext";
 import AppRouter from "./routes/routes";
 import Cart from "./components/Cart/Cart";
+import Logincontext from "./context/LoginContext";
 
 function App() {
   return (
-    <CartContext>
-      <DrawerContext>
-        <Header />
-        <Cart />
-        <AppRouter />
-        <Footer />
-      </DrawerContext>
-    </CartContext>
+    <Logincontext>
+      <CartContext>
+        <DrawerContext>
+          <Header />
+          <Cart />
+          <AppRouter />
+          <Footer />
+        </DrawerContext>
+      </CartContext>
+    </Logincontext>
   );
 }
 

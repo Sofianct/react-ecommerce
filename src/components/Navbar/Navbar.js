@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContextDrawer } from "../../context/DrawerContext";
 import "./navbar.css";
 import Container from "react-bootstrap/Container";
@@ -6,6 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/Cartcontext";
+import LoginForm from "../LoginForm/LoginForm";
+import { LoginContext } from "../../context/LoginContext";
 
 function Header() {
   const { setOpen } = useContext(ContextDrawer);
@@ -14,9 +16,12 @@ function Header() {
     (total, currentValue) => (total = total + currentValue.qty),
     0
   );
+  const [modalShow, setModalShow] = useState(false);
+  const { logged } = useContext(LoginContext);
+
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="navbar">
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -32,8 +37,15 @@ function Header() {
             <Link className="nav-link" to="/">
               Home
             </Link>
-            <Link className="nav-link" to="/checkout">
-              Guest Checkout
+            <Link className="nav-link" to="/products">
+              Products
+            </Link>
+            <Link
+              to="#"
+              className="nav-link"
+              onClick={() => setModalShow(true)}
+            >
+              {logged ? "Logged in" : "Login"}
             </Link>
             <button className="btnn" onClick={() => setOpen(true)}>
               <i className="fa-solid fa-cart-shopping"></i>
@@ -42,6 +54,8 @@ function Header() {
           </Nav>
         </Container>
       </Navbar>
+
+      <LoginForm show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 }

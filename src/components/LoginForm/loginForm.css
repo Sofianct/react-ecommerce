@@ -1,0 +1,34 @@
+form {
+  min-height: 15vh !important;
+}
+.modal-content {
+  min-width: 25vw !important;
+  border-radius: 7%;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+.centerText {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.btnGroup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.btnGroup button {
+  width: 100% !important;
+}
+input::placeholder {
+  font-size: 0.8rem !important;
+  opacity: 0.6 !important;
+  color: rgb(53, 53, 53) !important;
+}

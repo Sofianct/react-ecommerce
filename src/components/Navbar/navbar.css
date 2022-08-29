@@ -5,8 +5,7 @@ li {
 nav {
   display: flex;
   font-family: "Cabin", sans-serif;
-  background: #282828;
-  color: white;
+  background: #2b2c2c;
   height: 4rem;
 }
 body {
@@ -18,8 +17,14 @@ body {
   color: white;
   width: 1rem;
 }
+.btnn:focus {
+  outline: none;
+}
 .cartQty {
   font-size: 0.8rem;
   color: white;
   margin-left: 5px;
+}
+.navbar a {
+  color: white !important;
 }

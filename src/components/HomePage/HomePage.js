@@ -2,14 +2,15 @@ import React from "react";
 // import HomeProducts from "../HomeProducts/HomeProducts";
 import { Grid } from "@nextui-org/react";
 import HomeBanner from "../HomeBanner/HomeBanner";
-import Products from "../Products/Products";
+import HomeProducts from "../HomeProducts/HomeProducts";
+// import Products from "../Products/Products";
 
 function HomePage() {
   return (
     <Grid.Container justify="center">
       <HomeBanner />
-      {/* <HomeProducts /> */}
-      <Products />
+      <HomeProducts />
+      {/* <Products /> */}
     </Grid.Container>
   );
 }
