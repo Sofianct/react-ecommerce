@@ -1,3 +1,4 @@
+import { Table } from "@nextui-org/react";
 import React, { useState, useContext } from "react";
 import { CartContext } from "../../context/Cartcontext";
 import CartCounter from "../CartCounter/CartCounter";
@@ -69,6 +70,20 @@ const CartItem = ({ id, title, price, qty }) => {
         </td>
         <td>{qty * price},00 €</td>
       </tr>
+      {/* <Table.Row>
+        <Table.Cell>{title}</Table.Cell>
+        <Table.Cell>{price}, 00€</Table.Cell>
+        <Table.Cell>
+          <CartCounter
+            counter={counter}
+            setCounter={setCounter}
+            addValue={addValue}
+            substractValue={substractValue}
+            removeFromCart={removeFromCart}
+          />
+        </Table.Cell>
+        <Table.Cell>{qty * price},00 €</Table.Cell>
+      </Table.Row> */}
     </>
   );
 };

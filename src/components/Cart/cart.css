@@ -1,3 +1,21 @@
 table {
   font-size: 10px;
 }
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.flexContainer1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: space-between;
+  align-items: flex-start;
+}
+.flexContainer1 i {
+  color: #11181c;
+}

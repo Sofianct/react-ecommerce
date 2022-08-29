@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { ContextDrawer } from "../../context/DrawerContext";
 import CartItem from "../CartItem/CartItem";
 import { CartContext } from "../../context/Cartcontext";
+import { Text, Button } from "@nextui-org/react";
+import { Table } from "react-bootstrap";
 
 const Cart = () => {
   const { open, setOpen } = useContext(ContextDrawer);
@@ -24,26 +26,32 @@ const Cart = () => {
   };
 
   return (
-    <Drawer
-      open={open}
-      anchor="right"
-      onClose={() => setOpen(false)}
-      PaperProps={{ style: { width: "30%" } }}
-    >
-      <div className="text-center">
-        <p>Cart</p>
-        <button
-          type="button"
-          className="btn m-2"
-          onClick={() => setOpen(false)}
-        >
-          <i className="fa fa-close"></i>
-        </button>
+    <Drawer open={open} anchor="right" onClose={() => setOpen(false)}>
+      <div className="flexContainer">
+        <div className="flexContainer1">
+          <i className="fa-solid fa-cart-shopping ml-4"></i>
+          <Text
+            align="center"
+            css={{
+              color: "text",
+              fontWeight: "$semibold",
+              fontSize: "$sm",
+              ml: 4,
+            }}
+          >
+            Cart
+          </Text>
+        </div>
+        <div>
+          <Button auto light onClick={() => setOpen(false)}>
+            <i className="fa fa-close"></i>
+          </Button>
+        </div>
       </div>
       {cart.length === 0 ? (
         <div className="text-center mt-5">Cart is empty</div>
       ) : (
-        <>
+        <div className="checkoutBtn">
           <Scrollbars autoHide style={{ height: 600 }}>
             <table className="table table-sm table-responsive">
               <thead>
@@ -73,14 +81,18 @@ const Cart = () => {
             </table>
           </Scrollbars>
           <div>
-            <p>
-              Total: <span>{total(cart)},00 €</span>
-            </p>
+            <hr className="my-4" />
+            <Link to="/checkout">
+              <Button
+                size="lg"
+                color="secondary"
+                onClick={() => setOpen(false)}
+              >
+                Checkout · &nbsp; <span>{total(cart)},00 €</span>
+              </Button>
+            </Link>
           </div>
-          <Link to="/checkout">
-            <button className="btn btn-primary auto">Checkout</button>
-          </Link>
-        </>
+        </div>
       )}
     </Drawer>
   );
