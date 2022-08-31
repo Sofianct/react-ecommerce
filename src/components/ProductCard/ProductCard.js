@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import "./productCard.css";
-import { Card, Text, Row, Button } from "@nextui-org/react";
+import { Card, Text, Row } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { ContextDrawer } from "../../context/DrawerContext";
 import { CartContext } from "../../context/Cartcontext";
+import Button from "react-bootstrap/Button";
 
 const ProductCard = ({ id, title, img, price }) => {
   const { cart, setCart } = useContext(CartContext);
@@ -42,10 +43,13 @@ const ProductCard = ({ id, title, img, price }) => {
       Toast();
     }
   };
+  const itemPrice = (price) => {
+    return "$" + price.toFixed(2);
+  };
 
   return (
     <>
-      <Card className="card">
+      <Card isPressable className="card">
         <Card.Body>
           <Card.Image showSkeleton src={img} objectFit="cover" alt={title} />
         </Card.Body>
@@ -74,10 +78,16 @@ const ProductCard = ({ id, title, img, price }) => {
                 margin: "15px",
               }}
             >
-              {price},00 €
+              {itemPrice(price)}
             </Text>
             <Row wrap="wrap" justify="center" align="center">
-              <Button onPress={addProduct} color="success" auto ghost>
+              <Button
+                className="activeBtn"
+                onPress={addProduct}
+                color="success"
+                auto
+                ghost
+              >
                 Add to cart
               </Button>
             </Row>

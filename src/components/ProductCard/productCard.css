@@ -16,9 +16,6 @@
     transform: scale(1);
   }
 }
-button {
-  border: none;
-}
 
 .card {
   padding: 1rem;

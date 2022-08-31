@@ -1,9 +1,9 @@
-import { Table } from "@nextui-org/react";
 import React, { useState, useContext } from "react";
 import { CartContext } from "../../context/Cartcontext";
 import CartCounter from "../CartCounter/CartCounter";
+import Button from "react-bootstrap/Button";
 
-const CartItem = ({ id, title, price, qty }) => {
+const CartItem = ({ id, title, price, img, qty }) => {
   const { cart, setCart } = useContext(CartContext);
   //added a counter to change the qty prop
   const [counter, setCounter] = useState(qty);
@@ -22,6 +22,10 @@ const CartItem = ({ id, title, price, qty }) => {
         e.id === id ? { ...prodExist, qty: prodExist.qty + 1 } : e
       )
     );
+  };
+  const roundPrice = (price, qty) => {
+    const itemPrice = price * qty;
+    return "$" + itemPrice.toFixed(2);
   };
 
   /**
@@ -55,36 +59,30 @@ const CartItem = ({ id, title, price, qty }) => {
   };
 
   return (
-    <>
-      <tr>
-        <td>{title}</td>
-        <td>{price},00 €</td>
-        <td>
-          <CartCounter
-            counter={counter}
-            setCounter={setCounter}
-            addValue={addValue}
-            substractValue={substractValue}
-            removeFromCart={removeFromCart}
-          />
-        </td>
-        <td>{qty * price},00 €</td>
-      </tr>
-      {/* <Table.Row>
-        <Table.Cell>{title}</Table.Cell>
-        <Table.Cell>{price}, 00€</Table.Cell>
-        <Table.Cell>
-          <CartCounter
-            counter={counter}
-            setCounter={setCounter}
-            addValue={addValue}
-            substractValue={substractValue}
-            removeFromCart={removeFromCart}
-          />
-        </Table.Cell>
-        <Table.Cell>{qty * price},00 €</Table.Cell>
-      </Table.Row> */}
-    </>
+    <div className="cartContainer">
+      <section className="cartContainer--cart">
+        <img className="cartImg" src={img} alt={title} />
+        <section className="cartContainer--section">
+          <p className="cartContainer--title">
+            <span>{title}</span>
+          </p>
+          <article className="cartContainer--counter">
+            <CartCounter
+              counter={counter}
+              setCounter={setCounter}
+              addValue={addValue}
+              substractValue={substractValue}
+            />
+            <Button variant="link" onClick={removeFromCart}>
+              remove
+            </Button>
+          </article>
+        </section>
+        <p className="cartContainer--price">
+          <span>{roundPrice(price, qty)}</span>
+        </p>
+      </section>
+    </div>
   );
 };
 

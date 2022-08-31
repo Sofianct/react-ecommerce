@@ -7,6 +7,8 @@ table {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid darkgray;
 }
 .flexContainer1 {
   display: flex;
@@ -18,4 +20,52 @@ table {
 }
 .flexContainer1 i {
   color: #11181c;
+}
+
+.checkoutBtn {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  height: 100vh;
+  margin-bottom: 24px;
+}
+
+.cartContainer {
+  margin: 1rem 1rem 1rem 1.4rem;
+  /* border: 1px solid black; */
+}
+
+.cartContainer--cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 20rem;
+  font-size: 0.7rem;
+}
+
+.cartImg {
+  height: 4rem;
+  margin-right: 1rem;
+}
+
+.cartContainer--counter {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.7rem;
+  align-items: center;
+}
+.centerText {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.cartContainer--price {
+  font-weight: bold;
+  margin-left: 10px;
 }
