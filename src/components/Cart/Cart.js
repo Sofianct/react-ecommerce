@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Drawer } from "@mui/material";
-import { Scrollbars } from "react-custom-scrollbars-2";
 import "./cart.css";
 import { Link } from "react-router-dom";
 
 import { ContextDrawer } from "../../context/DrawerContext";
 import CartItem from "../CartItem/CartItem";
-import Cartcontext, { CartContext } from "../../context/Cartcontext";
+import { CartContext } from "../../context/Cartcontext";
 import { Text, Button } from "@nextui-org/react";
 
 const Cart = () => {

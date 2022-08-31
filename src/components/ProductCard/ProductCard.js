@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./productCard.css";
 import { Card, Text, Row } from "@nextui-org/react";
 import toast from "react-hot-toast";
@@ -6,7 +6,23 @@ import { ContextDrawer } from "../../context/DrawerContext";
 import { CartContext } from "../../context/Cartcontext";
 import Button from "react-bootstrap/Button";
 
+// function simulateNetworkRequest() {
+//   return new Promise((resolve) => setTimeout(resolve, 1000));
+// }
+
 const ProductCard = ({ id, title, img, price }) => {
+  // const [isLoading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     simulateNetworkRequest().then(() => {
+  //       setLoading(false);
+  //     });
+  //   }
+  // }, [isLoading]);
+
+  // const handleClick = () => setLoading(true);
+
   const { cart, setCart } = useContext(CartContext);
   const { setOpen } = useContext(ContextDrawer);
   const addProduct = () => {
@@ -81,15 +97,19 @@ const ProductCard = ({ id, title, img, price }) => {
               {itemPrice(price)}
             </Text>
             <Row wrap="wrap" justify="center" align="center">
-              <Button
-                className="activeBtn"
-                onPress={addProduct}
-                color="success"
-                auto
-                ghost
+              <div className="d-grid gap-2">
+                <Button className="addToCartBtn" onClick={addProduct}>
+                  Add to cart
+                </Button>
+              </div>
+
+              {/* <Button
+                variant="secondary"
+                disabled={isLoading}
+                onClick={!isLoading ? handleClick : null}
               >
-                Add to cart
-              </Button>
+                {isLoading ? "Loading…" : "Add to cart"}
+              </Button> */}
             </Row>
           </Row>
         </Card.Footer>

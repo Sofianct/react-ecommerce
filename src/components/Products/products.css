@@ -1,4 +1,4 @@
-.gridCont {
+.productsContainer {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -9,4 +9,5 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin-top: 2rem;
 }

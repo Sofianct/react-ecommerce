@@ -20,3 +20,10 @@
 .card {
   padding: 1rem;
 }
+
+.addToCartBtn {
+  width: 12rem;
+  background-color: #9136db;
+  border-color: #9136db;
+  border-radius: 15px;
+}

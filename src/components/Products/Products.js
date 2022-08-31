@@ -18,7 +18,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="gridCont">
+    <div className="productsContainer">
       <Grid.Container
         css={{
           width: "80%",

@@ -6,10 +6,8 @@
   align-content: flex-start;
   align-items: flex-start;
 }
-.btn-masmenos {
-  border-radius: 0;
-  height: 25px;
-  line-height: 16px;
-  padding: 0;
-  width: 30px;
+
+.counterBtn {
+  background-color: #522379;
+  border-color: #522379;
 }

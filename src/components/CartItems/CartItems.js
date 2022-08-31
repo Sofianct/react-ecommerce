@@ -123,7 +123,7 @@ const CartItems = () => {
             {/* <p>Iva: {totalTax}</p>
             <p>Total: {totalPrice}</p> */}
           </div>
-          <button className="btn btn-primary auto">Checkout</button>
+          <button type="button">Checkout</button>
         </>
       )}
     </Drawer>

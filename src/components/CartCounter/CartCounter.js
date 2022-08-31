@@ -6,9 +6,13 @@ import "./cartCounter.css";
 const CartCounter = ({ addValue, substractValue, counter }) => {
   return (
     <Button.Group size="xs">
-      <Button onClick={substractValue}>-</Button>
+      <Button className="counterBtn" onClick={substractValue}>
+        -
+      </Button>
       <Button disabled>{counter}</Button>
-      <Button onClick={addValue}>+</Button>
+      <Button className="counterBtn" onClick={addValue}>
+        +
+      </Button>
     </Button.Group>
   );
 };
