@@ -3,7 +3,7 @@ import { CartContext } from "../../context/Cartcontext";
 import CartCounter from "../CartCounter/CartCounter";
 import Button from "react-bootstrap/Button";
 
-const CartItem = ({ id, title, price, img, qty }) => {
+const CartItem = ({ id, title, description, price, img, qty }) => {
   const { cart, setCart } = useContext(CartContext);
   //added a counter to change the qty prop
   const [counter, setCounter] = useState(qty);
@@ -64,7 +64,8 @@ const CartItem = ({ id, title, price, img, qty }) => {
         <img className="cartImg" src={img} alt={title} />
         <section className="cartContainer--section">
           <p className="cartContainer--title">
-            <span>{title}</span>
+            {title}
+            <span>{description}</span>
           </p>
           <article className="cartContainer--counter">
             <CartCounter

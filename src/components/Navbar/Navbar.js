@@ -17,7 +17,27 @@ function Header() {
     0
   );
   const [modalShow, setModalShow] = useState(false);
-  const { logged } = useContext(LoginContext);
+  const [errorMessage, setErrorMessage] = useState();
+  const userData = {
+    name: "Sofia",
+    email: "email@email.com",
+    password: "123456",
+  };
+  const { logged, setLoggedIn } = useContext(LoginContext);
+
+  const loginVerification = (details) => {
+    if (
+      details.email === userData.email &&
+      details.password === userData.password
+    ) {
+      setLoggedIn(true);
+      console.log("Logged in");
+      return true;
+    } else {
+      setLoggedIn(false);
+      return false;
+    }
+  };
 
   return (
     <>
@@ -40,13 +60,24 @@ function Header() {
             <Link className="nav-link" to="/products">
               Products
             </Link>
-            <Link
-              to="#"
-              className="nav-link"
-              onClick={() => setModalShow(true)}
-            >
-              {logged ? "Logged in" : "Login"}
-            </Link>
+
+            {logged ? (
+              <Link
+                to="#"
+                className="nav-link"
+                onClick={() => setLoggedIn(false)}
+              >
+                Logout
+              </Link>
+            ) : (
+              <Link
+                to="#"
+                className="nav-link"
+                onClick={() => setModalShow(true)}
+              >
+                Login
+              </Link>
+            )}
             <button className="btnn" onClick={() => setOpen(true)}>
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
@@ -55,7 +86,12 @@ function Header() {
         </Container>
       </Navbar>
 
-      <LoginForm show={modalShow} onHide={() => setModalShow(false)} />
+      <LoginForm
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        loginVerification={loginVerification}
+        errorMessage={errorMessage}
+      />
     </>
   );
 }

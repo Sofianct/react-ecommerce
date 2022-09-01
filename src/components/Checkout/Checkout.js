@@ -1,15 +1,16 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./checkout.css";
 import { CartContext } from "../../context/Cartcontext";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const { cart, setCart } = useContext(CartContext)
+  const navigate = useNavigate();
+  const { cart, setCart } = useContext(CartContext);
   const [details, setDetails] = useState({
     firstName: "",
     lastName: "",
@@ -26,10 +27,17 @@ const Checkout = () => {
     cardDate: "",
     cardCvc: "",
   });
-  const closeForm = () => {
-    setShow(false);
-    resetForm();
-    window.location = "/";
+  const toHomepage = () => {
+    navigate("/", { replace: true });
+  };
+  const buyNow = () => {
+    //toast
+    Swal.fire("Good job!", "You clicked the button!", "success");
+
+    setTimeout(() => {
+      resetForm();
+      toHomepage();
+    }, 5000);
   };
   const openModal = () => {
     if (details.cardCvc !== "") {
@@ -64,10 +72,18 @@ const Checkout = () => {
   };
   const total = (arr) => {
     const itemsPrice = arr.reduce((a, c) => a + c.qty * c.price, 0);
-    return itemsPrice;
+    return "$" + itemsPrice.toFixed(2);
   };
+  const itemPrice = (price) => {
+    return "$" + price.toFixed(2);
+  };
+  const roundPrice = (price, qty) => {
+    const itemPrice = price * qty;
+    return "$" + itemPrice.toFixed(2);
+  };
+
   return (
-    <div className="container" style={{ width: "75%" }}>
+    <div className="container" style={{ width: "75%", minHeight: "80%" }}>
       <h3 className="text-center mt-5 mb-3 font-weight-bold">Checkout</h3>
       <form onSubmit={submitHandler}>
         <div className="row">
@@ -355,20 +371,22 @@ const Checkout = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {cart.map(({ id, title, price, qty }) => {
+                  {cart.map(({ id, title, description, price, qty }) => {
                     return (
                       <tr key={id}>
-                        <td>{title}</td>
-                        <td>{price},00 €</td>
+                        <td>
+                          {title}, {description}
+                        </td>
+                        <td>{itemPrice(price)}</td>
                         <td>{qty}</td>
-                        <td>{qty * price},00 €</td>
+                        <td>{roundPrice(qty, price)}</td>
                       </tr>
                     );
                   })}
                   <tr>
                     <td colSpan={3}>You are about to pay:</td>
                     <td>
-                      <span> {total(cart)},00€</span>
+                      <span> {total(cart)}</span>
                     </td>
                   </tr>
                 </tbody>
@@ -379,7 +397,7 @@ const Checkout = () => {
 
         <div className="row mb-2 mt-3 justify-content-center">
           <button
-            onClick={openModal}
+            onClick={buyNow}
             type="submit"
             className="btn btn-success btn-lg"
           >
@@ -387,15 +405,6 @@ const Checkout = () => {
           </button>
         </div>
       </form>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Body>Thanks for your purchase!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={closeForm}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 };

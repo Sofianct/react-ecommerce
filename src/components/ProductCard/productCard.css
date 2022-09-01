@@ -27,3 +27,7 @@
   border-color: #9136db;
   border-radius: 15px;
 }
+.addToCartBtn:hover {
+  background-color: #9c4bdf;
+  border-color: #9c4bdf;
+}

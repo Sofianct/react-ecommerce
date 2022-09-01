@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 //   return new Promise((resolve) => setTimeout(resolve, 1000));
 // }
 
-const ProductCard = ({ id, title, img, price }) => {
+const ProductCard = ({ id, title, description, img, price }) => {
   // const [isLoading, setLoading] = useState(false);
 
   // useEffect(() => {
@@ -29,16 +29,9 @@ const ProductCard = ({ id, title, img, price }) => {
     const prodExist = cart.find((e) => e.id === id);
 
     const Toast = () => {
-      toast.custom(
-        <div
-          style={{ borderRadius: "10px" }}
-          className="p-2 mb-2 bg-success text-white scale-up-center"
-        >
-          <button onClick={() => setOpen(true)} className="badge badge-success">
-            Added to cart
-          </button>
-        </div>
-      );
+      toast.success("Added to cart", {
+        position: "top-center",
+      });
     };
 
     if (prodExist) {
@@ -53,7 +46,14 @@ const ProductCard = ({ id, title, img, price }) => {
     } else {
       setCart([
         ...cart,
-        { id: id, title: title, price: price, img: img, qty: 1 },
+        {
+          id: id,
+          title: title,
+          description: description,
+          price: price,
+          img: img,
+          qty: 1,
+        },
       ]);
       //Toast
       Toast();
@@ -61,6 +61,10 @@ const ProductCard = ({ id, title, img, price }) => {
   };
   const itemPrice = (price) => {
     return "$" + price.toFixed(2);
+  };
+
+  const prodTitle = (title, desc) => {
+    return title + " " + desc;
   };
 
   return (
@@ -76,7 +80,6 @@ const ProductCard = ({ id, title, img, price }) => {
         >
           <Row wrap="wrap" justify="center" align="center">
             <Text
-              b
               css={{
                 color: "#11181C",
                 fontWeight: "$semibold",
@@ -84,12 +87,11 @@ const ProductCard = ({ id, title, img, price }) => {
                 margin: "15px",
               }}
             >
-              {title}
+              {prodTitle(title, description)}
             </Text>
             <Text
               css={{
                 color: "#363636",
-                fontWeight: "$semibold",
                 fontSize: "$md",
                 margin: "15px",
               }}
@@ -97,11 +99,9 @@ const ProductCard = ({ id, title, img, price }) => {
               {itemPrice(price)}
             </Text>
             <Row wrap="wrap" justify="center" align="center">
-              <div className="d-grid gap-2">
-                <Button className="addToCartBtn" onClick={addProduct}>
-                  Add to cart
-                </Button>
-              </div>
+              <Button className="addToCartBtn" onClick={addProduct}>
+                Add to cart
+              </Button>
 
               {/* <Button
                 variant="secondary"

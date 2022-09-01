@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./loginForm.css";
 import { Form } from "react-bootstrap";
 import { Button } from "@nextui-org/react";
@@ -7,12 +7,14 @@ import { LoginContext } from "../../context/LoginContext";
 
 const LoginForm = (props) => {
   const { logged, setLoggedIn } = useContext(LoginContext);
+  const [details, setDetails] = useState({ email: "", password: "" });
   const login = () => {
-    setLoggedIn(true);
-
-    props.onHide();
-    console.log(logged);
+    if (props.loginVerification(details) == true) {
+      setLoggedIn(true);
+      props.onHide();
+    }
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
   };
@@ -31,16 +33,28 @@ const LoginForm = (props) => {
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Label className="mb-2">Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            {/* <Form.Text className="text-muted"> */}
-            {/* Error control */}
-            {/* We'll never share your email with anyone else. */}
-            {/* </Form.Text> */}
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              onChange={(e) =>
+                setDetails({ ...details, email: e.target.value })
+              }
+              value={details.email}
+              required
+            />
+            {/* <Form.Text className="text-muted">Message</Form.Text> */}
           </Form.Group>
 
           <Form.Group className="mb-4" controlId="formBasicPassword">
             <Form.Label className="mb-2">Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={(e) =>
+                setDetails({ ...details, password: e.target.value })
+              }
+              value={details.password}
+            />
           </Form.Group>
 
           <div className="btnGroup">

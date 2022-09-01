@@ -3,6 +3,7 @@ import React from "react";
 import { Grid } from "@nextui-org/react";
 import HomeBanner from "../HomeBanner/HomeBanner";
 import HomeProducts from "../HomeProducts/HomeProducts";
+import { Toaster } from "react-hot-toast";
 // import Products from "../Products/Products";
 
 function HomePage() {
@@ -10,7 +11,7 @@ function HomePage() {
     <Grid.Container justify="center">
       <HomeBanner />
       <HomeProducts />
-      {/* <Products /> */}
+      <Toaster />
     </Grid.Container>
   );
 }

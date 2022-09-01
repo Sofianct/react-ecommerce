@@ -45,10 +45,10 @@ const Products = () => {
               <ProductCard
                 id={product.id}
                 title={product.title}
+                description={product.description}
                 img={product.img}
                 price={product.price}
               />
-              {/* Toast "Added to cart" */}
               <Toaster />
             </Grid>
           );
