@@ -9,7 +9,7 @@ const LoginForm = (props) => {
   const { logged, setLoggedIn } = useContext(LoginContext);
   const [details, setDetails] = useState({ email: "", password: "" });
   const login = () => {
-    if (props.loginVerification(details) == true) {
+    if (props.loginVerification(details) === true) {
       setLoggedIn(true);
       props.onHide();
     }

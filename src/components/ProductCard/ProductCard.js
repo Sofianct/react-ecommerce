@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import "./productCard.css";
 import { Card, Text, Row } from "@nextui-org/react";
 import toast from "react-hot-toast";
@@ -11,17 +11,6 @@ import Button from "react-bootstrap/Button";
 // }
 
 const ProductCard = ({ id, title, description, img, price }) => {
-  // const [isLoading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     simulateNetworkRequest().then(() => {
-  //       setLoading(false);
-  //     });
-  //   }
-  // }, [isLoading]);
-
-  // const handleClick = () => setLoading(true);
 
   const { cart, setCart } = useContext(CartContext);
   const { setOpen } = useContext(ContextDrawer);

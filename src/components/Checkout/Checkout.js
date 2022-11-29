@@ -32,7 +32,7 @@ const Checkout = () => {
   };
   const buyNow = () => {
     //toast
-    Swal.fire("Good job!", "You clicked the button!", "success");
+    Swal.fire("Good job!", "Thanks for your purchase!", "success");
 
     setTimeout(() => {
       resetForm();

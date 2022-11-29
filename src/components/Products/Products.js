@@ -42,6 +42,7 @@ const Products = () => {
         {prod.map((product) => {
           return (
             <Grid xs={6} sm={4} md={3} key={product.id}>
+              
               <ProductCard
                 id={product.id}
                 title={product.title}
